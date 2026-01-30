@@ -1,31 +1,64 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  FlatList,
-}from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Label } from "@react-navigation/elements";
 
-
-
-
-const DATA =[
-  {id :'1',title:'เรียนรู้การผสมพันธ์ดอกไม้'},
-  {id : '2',title:'การทดลองทางวิทยาศาสตร์'},
-  {id : '3',title:'การสังเกตเเละบันทึกผล'},
-  {id : '4',title:'การวิเคราะห์ข้อมูล'},
-  {id : '5',title:'การสรุปผลการทดลอง'},
-  {id :'6',title:''},
-  {id :'7',title:''},
-  {id :'6',title:''},
-  {id :'7',title:''},
-  {id :'6',title:''},
-  {id :'7',title:''},
-  {id :'6',title:''},
-  {id :'7',title:''},
+const DATA = [
+  { id: "1", title: "เขียนโปรแกรมเเละการทำเว็บไชต์" },
+  { id: "2", title: "ออกแบบ UI / UX" },
+  { id: "3", title: "อาหารรสจัด แกงปลาดุก" },
+  { id: "4", title: "เล่นเกมเเนว lifestyle" },
+  { id: "5", title: "การพูดภาษาจีนเเละภาาาอังกฤษ" },
+  { id: "6", title: "สัตว์ที่เฟลลี่กับมนุษย์ เเมวน้ำเเละสิงโตทะเล" },
+  { id: "7", title: "เลี้ยงและดูแลสัตว์" },
+  { id: "8", title: "ดูอนิเมะ/ดูหนังเเฮรี่พอตเตอร์" },
+  { id: "9", title: "เขียนโปรแกรมภาษาReact" },
+  { id: "10", title: "การพบเจอผู้คนแปลกหน้า" },
+  { id: "11", title: "การทำงานเอกสาร" },
+  { id: "12", title: "การช่วยเหลือคน" },
+  { id: "13", title: "การทำงานขายไหมพรม จากงานเฮดเมด" },
+  { id: "14", title: "เขียนโปรแกรมภาษาReact" },
+  { id: "15", title: "การพบเจอผู้คนแปลกหน้า" },
+  { id: "16", title: "การทำงานเอกสาร" },
+  { id: "17", title: "การช่วยเหลือคน" },
+  { id: "18", title: "การทำงานขายไหมพรม จากงานเฮดเมด" },
+  { id: "19", title: "การช่วยเหลือคน" },
+  { id: "20", title: "การทำงานขายไหมพรม จากงานเฮดเมด" },
 ];
+
+
+const DATA1 = [
+  { id: "1", title: "งานที่เร่งรีบเกินไป" },
+  { id: "2", title: "โค๊ดที่เจอ erorr เขียนผิด" },
+  { id: "3", title: "" },
+  { id: "4", title: "" },
+  { id: "5", title: "" },
+  { id: "6", title: "" },
+  { id: "7", title: "" },
+  { id: "6", title: "" },
+  { id: "7", title: "" },
+  { id: "6", title: "" },
+  { id: "7", title: "" },
+  { id: "6", title: "" },
+  { id: "7", title: "" },
+];
+
+const personalInfo = [
+  { id: 1, label: "ชื่อ", value: "ณัฐธยาน์ เดชา" },
+  { id: 2, label: "ชื่อเล่น", value: "เจนนี่" },
+  { id: 3, label: "อีเมล", value: "Jaenna2546@gmail.com" },
+];
+
+const education=[
+  {id:'1',label:"สถาบันศึกษา",value:'มหาวิทยาลัยธุรกิจบัณฑิตย์'},
+  {id:'2',label:"ระดับอุดมศึกษา",value:'ปริญญาตรี'},
+  {id:'3',label:"สาขา",value:'วิศวกรรมคอมพิวเตอร์(ชั้นปีที่3)'},
+];
+
+const home=[
+  {id:'1',value:'49/198 คอนโดนนท์ทาวเวอร์ อาคารA ต.ตลาดขสัญ อ.เมืองนนทบุรี จ.นนทบุรี'},
+];
+  
 
 //ฟังก์ชันสำหรับเเสดงรายการเเต่ละเเถว เหมือนli
 const renderItem = ({ item }: { item: { id: string; title: string } }) => (
@@ -35,55 +68,85 @@ const renderItem = ({ item }: { item: { id: string; title: string } }) => (
   </View>
 );
 
-
 const App = () => {
-  return(
-    <ScrollView contentContainerStyle={styles.scrollContent}>      {/*ตัวลูกเลื่อนน*/}
-    {/* ส่วนหัว */}
+  return (
+    <ScrollView contentContainerStyle={styles.scrollContent}>
+      {" "}
+      {/*ตัวลูกเลื่อนน*/}
+      {/* ส่วนหัว */}
       <View style={styles.header}>
         <Text style={styles.headerText}>My Profile</Text>
       </View>
       {/* <Ionicons name="home-sharp" size={20} ></Ionicons> */}
-
-      <View style={styles.row}> {/*ตัวกล่องในview สร้างอีกกล่อง ในเเนวนอน*/}
-        <View style={[styles.box,{backgroundColor:'#6181BD'}]}>
-          <Text style={[styles.boxText]} >  รหัส {'\n'} 66111594 </Text>
+      <View style={styles.row}>
+        {" "}
+        {/*ตัวกล่องในview สร้างอีกกล่อง ในเเนวนอน*/}
+        <View style={[styles.box, { backgroundColor: "#B9A7D8" }]}>
+          <Text style={[styles.boxText]}> รหัส {"\n"} 66111594 </Text>
         </View>
-        <View style={[styles.box,{backgroundColor:'#6F61BD'}]}>
-          <Text style={[styles.boxText]}>วิทยาลัยวิศวกรรมศาสตร์เเละเทคโนโลยี {'\n'}</Text>
+        <View style={[styles.box, { backgroundColor: "#AFC3E6" }]}>
+          <Text style={[styles.boxText]}>
+            วิทยาลัย{"\n"}วิศวกรรมศาสตร์{"\n"}เเละเทคโนโลยี {"\n"}
+          </Text>
         </View>
-        <View style={[styles.box,{backgroundColor:'#9D61BD'}]}>
-          <Text style={[styles.boxText]}>สาขา {'\n'} วิศวคอมพิวเตอร์</Text>
+        <View style={[styles.box, { backgroundColor: "#A8D8C8" }]}>
+          <Text style={[styles.boxText]}>สาขา {"\n"} วิศวคอมพิวเตอร์</Text>
         </View>
       </View>
-       
-      {/*ตัวอย่างเนื้อหายาว ทำให้เกิดการเลื่อนของScrollview */}
+      {/* ข้อมูลส่วนตัว */}
       <View style={styles.contenSection}>
-        <Text style={styles.title}> ข้อมูลส่วนตัว</Text>
-        <View style={styles.listItem} >
-          <Text > ชื่อ: นางสาว ณัฐธยาน์ เดชา </Text>
-        </View>
-        <View style={styles.listItem1}>
-          <Text>ชื่อเล่น : เจนนี่ </Text>
-        </View>
-        <View style={styles.listItem2}> 
-          <Text>อีเมล:</Text>
-        </View>        
-        
-        {/* {Array.from({length:3}).map((_,index) =>(
-          <View key ={index} style={styles.listItem}>
-            <Text>รายการที่ {index + 1}:เรียนรู้เรื่องการผสมพันธ์ทางดอกเกศร</Text>
+        <Text style={styles.title}>ข้อมูลส่วนตัว :</Text>
+        {personalInfo.map((item) => (
+          <View key={item.id} style={styles.listItem}>
+            <Text>
+              {item.label} : {item.value}
+            </Text>
+          </View>
+        ))}
+        <Text style={styles.title}>การศึกษา :</Text>
+         {education.map((item) => (
+          <View key={item.id} style={styles.listItem1}>
+            <Text>
+              {item.label} : {item.value}
+            </Text>
+          </View>
+        ))}
+        <Text style={styles.title}>ที่อยู่ :</Text>
+         {home.map((item) => (
+          <View key={item.id} style={styles.listItem2}>
+            <Text>{item.value}</Text>
+          </View>
+        ))}
+
+        {/* {Array.from({ length: 3 }).map((_, index) => (
+          <View key={index} style={styles.listItem}>
+            <Text>
+              รายการที่ {index + 1}:เรียนรู้เรื่องการผสมพันธ์ทางดอกเกศร
+            </Text>
           </View>
         ))} */}
-      </View>
 
-   
+      </View>
+      {/*สิ่งที่ชอบ  FlatList*/}
       <View style={styles.contenSection}>
-       <FlatList
-         data={DATA} //ข้อมูลที่เเสดง
-         renderItem={renderItem} //ฟังกช์วาดหน้าตาเเต่ละเเถว
-         keyExtractor={item => item.id} //กำหนดkeyเเต่ละเเถว
-         ListHeaderComponent={<Text style={styles.headerFlatList}>สิ่งที่ชอบ</Text>}
+        <FlatList
+          data={DATA} //ข้อมูลที่เเสดง
+          renderItem={renderItem} //ฟังกช์วาดหน้าตาเเต่ละเเถว
+          keyExtractor={(item) => item.id} //กำหนดkeyเเต่ละเเถว
+          ListHeaderComponent={
+            <Text style={styles.headerFlatList}>สิ่งที่ชอบ</Text>
+          }
+        />
+      </View>
+      {/*สิ่งที่ชอบ  FlatList2*/}
+      <View style={styles.contenSection}>
+        <FlatList
+          data={DATA1} //ข้อมูลที่เเสดง
+          renderItem={renderItem} //ฟังกช์วาดหน้าตาเเต่ละเเถว
+          keyExtractor={(item) => item.id} //กำหนดkeyเเต่ละเเถว
+          ListHeaderComponent={
+            <Text style={styles.headerFlatList1}>สิ่งที่ไม่ชอบ</Text>
+          }
         />
       </View>
     </ScrollView>
@@ -91,120 +154,114 @@ const App = () => {
 };
 
 //ตัวcssน้าประกาศตรงนี้เเทน เเบบรวมไฟล์
-const styles = StyleSheet.create({   
-  scrollContent:{
-    padding:20,
+const styles = StyleSheet.create({
+  scrollContent: {
+    padding: 20,
   },
-  header:{   //หัวใหญ่
-    height:100,
-    backgroundColor:'#a5a5a5',
-    justifyContent:'center',
-    alignItems:'center',
-    borderRadius:45,
-    marginBottom:20,
+  header: {
+    //หัวใหญ่
+    height: 100,
+    backgroundColor: "#F2A7B5",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 45,
+    marginBottom: 20,
   },
-  headerText:{ //Text หัวใหญ่
-    color:'white',
-    fontSize:24,
-    fontWeight:'bold',
-    fontFamily:'Manrope',
-   },
-  row:{
-    flexDirection:'row',
-    justifyContent:'space-between',
-    marginBottom:20,
+  headerText: {
+    //Text หัวใหญ่
+    color: "Black",
+    fontSize: 25,
+    fontWeight: "bold",
+    fontFamily: "Manrope",
   },
-  box:{
-    flex:1,
-    height:100,
-    justifyContent:'center',
-    marginHorizontal:5,
-    alignItems:'center',
-    borderRadius:22,
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
   },
-  boxText:{             //การประกาศตรงนี้
-    color:'white',
-    fontWeight:'300',
-    textAlign:'center',
-    fontSize:13,
-    fontFamily:'Manrope',
-
+  box: {
+    flex: 1,
+    height: 100,
+    justifyContent: "center",
+    marginHorizontal: 5,
+    alignItems: "center",
+    borderRadius: 22,
   },
-  contenSection:{
-    marginTop:10,
+  boxText: {
+    //การประกาศตรงนี้
+    color: "Black",
+    fontWeight: "300",
+    textAlign: "center",
+    fontSize: 14,
+    fontFamily: "Manrope",
   },
-  title:{
-    fontSize:20,
-    fontWeight:'bold',
-    marginBottom:10,
+  contenSection: {
+    marginTop: 10,
   },
-  listItem:{
-    backgroundColor:'#f0f0f0',
-    padding:10,
-    borderRadius:5,
-    marginBottom:8,
-    borderLeftWidth:5,
-    borderLeftColor:'#66168e',
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
-  listItem1:{
-    backgroundColor:'#f0f0f0',
-    padding:10,
-    borderRadius:5,
-    marginBottom:8,
-    borderLeftWidth:5,
-    borderLeftColor:'#2b0fba',
+  listItem: {
+    backgroundColor: "#ffffff", //ช่องเต็มของlist
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 8,
+    borderLeftWidth: 5,
+    borderLeftColor: "#B9A7D8",
   },
-   listItem2:{
-    backgroundColor:'#f0f0f0',
-    padding:10,
-    borderRadius:5,
-    marginBottom:8,
-    borderLeftWidth:5,
-    borderLeftColor:'#417ddc',
+  listItem1: {
+    backgroundColor: "#ffffff",
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 8,
+    borderLeftWidth: 5,
+    borderLeftColor: "#AFC3E6",
   },
-  contenSectionFlatLisr:{
-    marginTop:20,
+  listItem2: {
+    backgroundColor: "#ffffff",
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 8,
+    borderLeftWidth: 5,
+    borderLeftColor: "#A8D8C8",
   },
-  headerFlatList:{
-    fontSize:24,
-    fontWeight:'bold',
-    padding:20,
-    backgroundColor:'#6F61BD',
+  contenSectionFlatLisr: {
+    marginTop: 20,
   },
-  itemContainer:{
-    flexDirection:'row',
-    alignItems:'center',
-    paddingVertical:8,
-    padding:15,
-    borderBottomWidth:1,
-    borderBottomColor:'#e0e0e0',
+  headerFlatList: {
+    fontSize: 24,
+    fontWeight: "bold",
+    padding: 20,
+    borderRadius: 15,
+    backgroundColor: "#B9A7D8",
   },
-  dot:{
-    width:8,
-    height:8,
-    borderRadius:4,
-    backgroundColor:'#b42d99',
-    marginRight:10,
-    
+  headerFlatList1: {
+    fontSize: 24,
+    fontWeight: "bold",
+    padding: 20,
+    borderRadius: 15,
+    backgroundColor: "#AFC3E6",
+  },
+  itemContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 8,
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e0e0e0",
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: "#A8D8C8",
+    marginRight: 10,
   },
   itemText: {
-  fontSize: 16,
-  color: '#333',
-},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    fontSize: 16,
+    color: "#333",
+  },
 });
 export default App;
