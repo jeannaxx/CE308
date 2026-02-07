@@ -19,20 +19,20 @@ export const ItemCard = ({
   return (
     <View
       style={{
-        backgroundColor: "#dadada",
-        padding: 30,
-        borderRadius: 8,
-        marginBottom: 25,
-        width: 350,
-        elevation: 2,
+        backgroundColor: "#e5e5e5",
+        padding: 16,
+        borderRadius: 10,
+        marginBottom: 12,
+        width: 300,
       }}
     >
-      <Text style={{ fontSize: 18, fontWeight: "600" }}>
+      <Text style={{ fontSize: 16, fontWeight: "600" }}>
         ชื่อสินค้า: {productName}
       </Text>
       <Text>ราคา: {price} บาท</Text>
       <Text>จำนวน: {pcs} ชิ้น</Text>
-      <View style={{ marginTop: 12, width: "100%" }}>
+
+      <View style={{ marginTop: 10, alignSelf: "flex-start" }}>
         <CustomButton
           title="Buy"
           size={btnSize}
