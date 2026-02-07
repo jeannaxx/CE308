@@ -19,7 +19,7 @@ export const ItemCard = ({
   return (
     <View
       style={{
-        backgroundColor: "#dfdfdf",
+        backgroundColor: "#dadada",
         padding: 30,
         borderRadius: 8,
         marginBottom: 25,

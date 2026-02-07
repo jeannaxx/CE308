@@ -3,24 +3,23 @@ import { Pressable, Text, StyleSheet } from "react-native";
 type CustomButtonProps = {
   title: string;
   onPress: () => void;
-  variant: "primary" | "secondary" | "danger";
   size: "sm" | "md" | "lg";
+  variant: "primary" | "secondary" | "danger";
 };
 
 export const CustomButton = ({
   title,
   onPress,
-  variant,
   size,
+  variant,
 }: CustomButtonProps) => {
   return (
     <Pressable
       onPress={onPress}
-      style={({ pressed }) => [
+      style={[
         styles.base,
         styles[variant],
         styles[size],
-        pressed && { opacity: 0.7 },
       ]}
     >
       <Text style={styles.text}>{title}</Text>
@@ -30,27 +29,21 @@ export const CustomButton = ({
 
 const styles = StyleSheet.create({
   base: {
-    width: "100%",              // ✅ สำคัญมาก
     borderRadius: 6,
     alignItems: "center",
     justifyContent: "center",
-    display: "flex",
+    paddingHorizontal: 14,
   },
   primary: { backgroundColor: "#2563eb" },
   secondary: { backgroundColor: "#6b7280" },
   danger: { backgroundColor: "#dc2626" },
 
-  sm: {
-    paddingVertical: 8,
-  },
-  md: {
-    paddingVertical: 12,
-  },
-  lg: {
-    paddingVertical: 16,
-  },
+  sm: { paddingVertical: 6 },
+  md: { paddingVertical: 8 },
+  lg: { paddingVertical: 10 },
+
   text: {
-    color: "white",
+    color: "#fff",
     fontWeight: "600",
   },
 });
