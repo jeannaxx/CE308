@@ -33,6 +33,7 @@ export default function CustomInput({
       {/*เงื่อนไข editable editable === false พื้นหลังสีเทาเป็นcisabled,ถ้าเเก้ไขได้ เป็นพื้นหลังขาว keyboardTypeเปลี่ยนสีพื้นหลัง */}
       {/*กำหนดสี placeholder (สีเทาอ่อน) ใช้ prop โดยตรง */}
       {/*...props ส่ง props อื่น ๆ ต่อเข้าไป value,onChangeText,editable,keyboardType ทำให้ยืดหยุ่น */}
+      {/* ถ้าไม่มีลูกแบบนี้ ใส่ปิดเลย / */ }
       <TextInput
         className={` 
           w-full px-4 py-3 rounded-lg border-2
@@ -43,7 +44,7 @@ export default function CustomInput({
         placeholderTextColor="#9CA3AF"
         {...props}
       />
-      {/*Error Messsage */}
+      {/*Error Messsage แสดงเฉพาะตอนมี error */}
       {/*AND && hasError === true โค้ดด้านขวาจะถูก render
       ถ้า hasError === falseจะไม่แสดง   
       *****วิธีที่นิยมมากในการแสดง/ซ่อน UI */}
