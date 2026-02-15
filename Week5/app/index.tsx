@@ -162,11 +162,11 @@ export default function Index() {
       [name]: true,
     }));
     //Validate เมื่อblur ,ตรวจ error ทันทีตอน blur
-    {
-      /*✏️เอาค่าปัจจุบันของช่องนั้นมาเช็ค
-      ✏️ถ้ามีปัญหา → เก็บข้อความ error
-      ✏️ถ้าไม่มี → error = undefined */
-    }
+    
+      //✏️เอาค่าปัจจุบันของช่องนั้นมาเช็ค
+      //✏️ถ้ามีปัญหา → เก็บข้อความ error
+      //✏️ถ้าไม่มี → error = undefined 
+    
     const error = validateField(name, formData[name]);
     setErrors((prev) => ({
       ...prev,
@@ -174,24 +174,26 @@ export default function Index() {
     }));
     //สั้นๆ พอออกจากช่อง → ทำเครื่องหมายว่าเคยแตะ → ตรวจว่า input ถูกไหม → เก็บ error
   };
-  // ฟังก์ชัน validate ทั้งฟอร์ม
+
+  // ฟังก์ชัน validate ทั้งฟอร์ม   //❗เรียก validateField เพื่อตรวจแต่ละช่อง
   const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-    let isValid = true;
+    const newErrors: FormErrors = {};  //❗ไว้เก็บerrorsของเเต่ละfield
+    let isValid = true;  // ❗isValid = true ไว้ก่อน(สมมุติว่าฟอมร์ถูก)
+                         
 
     //ตรวจสอบfield
     (Object.keys(formData) as Array<keyof FormData>).forEach((key) => {
       const error = validateField(key, formData[key]);
       if (error) {
-        newErrors[key] = error;
-        isValid = false;
-      }
+        newErrors[key] = error;   //❗ถ้ามีerror ลงในnewErrors
+        isValid = false;          //❗ตั้ง isValid = false
+      }                           //❗สุดท้าย isValid จะบอกว่า ฟอร์มผ่านหรือไม่ผ่าน ✅❌ ถ้าไม่มีจะผ่านไป
     });
 
-    setErrors(newErrors);
+    setErrors(newErrors); // ❗เอาerrorที่ตรวจเจอจจากvalidaForm >เก็บในstate errors >เพื่อให้ไปแสดงข้อความerrorใต้input เเต่ละช่อง แบบเเจ้งเตือนงี้
 
     //Mark ทุกfieldว่าถูกtouch เเล้ว
-    const allTouched: { [key: string]: boolean } = {};
+    const allTouched: { [key: string]: boolean } = {};  //❗เรียงมากเลย สร้างobject|keyชื่อfield|value=true|false >ใช้ควบคุมการเเสดงerror หรือยัง
     Object.keys(formData).forEach((key) => {
       allTouched[key] = true;
     });
