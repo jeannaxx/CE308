@@ -1,5 +1,25 @@
 import { Stack } from "expo-router";
 
 export default function RootLayout() {
-  return()
+  return(
+    <Stack>
+      <Stack.Screen
+       name="index"
+       options={{title:'Home'}}
+      />
+      <Stack.Screen
+        name="details"
+        options={{title:'Details'}}
+      />
+      <Stack.Screen
+        name="setting"
+        options={{
+          title:"Setting",
+          headerStyle:{ backgroundColor:'#f45aae'},
+          headerTintColor:'#fff',
+          }}
+      />
+    </Stack>
+
+  )
 }
