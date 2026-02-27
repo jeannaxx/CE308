@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   // สไตล์สำหรับส่วน header (ด้านบนสุด)
   headerSection: {
-    backgroundColor: '#24255d', // สีพื้นหลังเป็นม่วง-น้ำเงิน
+    backgroundColor: '#6366f1', // สีพื้นหลังเป็นม่วง-น้ำเงิน
     paddingTop: 50,
     paddingBottom: 20,
     paddingHorizontal: 20,
