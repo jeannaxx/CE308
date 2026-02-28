@@ -2,9 +2,9 @@ import { Text, Button, StyleSheet, Pressable, ScrollView } from 'react-native';
 import { router } from 'expo-router';
 
 const products = [
-  { id: '1', name: 'Premium Coffee Bean', price: '฿ 450' },
-  { id: '2', name: 'Green Tea Powder', price: '฿290' },
-  { id: '3', name:'Oat Milk 1L',price:'฿115'},
+  { id: '1', name: 'SeaMory Ocean Drop', price: '฿590',desc:'เครื่องประดับแก้วทะเลสุดพรีเมียม' },
+  { id: '2', name: 'SeaMory Blue Tide', price: '฿290',desc:'เครื่องประดับแก้วสีน้ำเงินจากใต้ทะเล'},
+  { id: '3', name:'SeaMory Sea Glow',price:'฿350',desc:'เครื่องประดับแก้วทะเลเเห่งการเฉิดฉาย เจิดจรัญ'},
 ];
 
 export default function HomeScreen() {
@@ -12,7 +12,7 @@ export default function HomeScreen() {
     <ScrollView contentContainerStyle={styles.scrollContent}>
    
       
-      {/* <Text style={styles.sectionTitle}></Text>  หัวเรื่อง ไม่เอาก็ปิดเลย */}
+      {/* <Text style={styles.sectionTitle}></Text>  หัวเรื่อง ไม่เอาก็ปิดเลย router.push() ส่งข้อมูลไป datails  */}
       {products.map((item) => (
         <Pressable
           key={item.id}
@@ -22,7 +22,9 @@ export default function HomeScreen() {
               params: { 
                 id: item.id, 
                 name: item.name, 
-                price: item.price 
+                price: item.price ,
+                // sale:item.pricesale,
+                desc:item.desc,
               }
             });
           }}
@@ -30,7 +32,11 @@ export default function HomeScreen() {
         >
           <Text>{item.name}</Text>
           <Text style={styles.price}>{item.price}</Text>
+          {/* <Text style={styles.pricesale}>{item.pricesale}</Text> */}
+          {false && <Text>{item.desc}</Text>}
         </Pressable>
+        
+
       ))}
     </ScrollView>
   );
@@ -54,15 +60,23 @@ const styles = StyleSheet.create({
   },
   productCard: {
     padding: 15,
-    backgroundColor: '#ebebeb',
+    backgroundColor: '#e4e4e4',
     marginBottom: 10,
     width: '100%',
     borderRadius: 8,
   },
   price: {
-    color: '#ef4e35',
+    color: '#2721da',
     marginTop: 5,
   },
+  // pricesale:{
+  //   color:'#da2121',
+  //   fontWeight:'bold',
+  // }
+  desc:{
+    color:'#da2121',
+  },
+
 });
 
 

@@ -6,7 +6,7 @@ export default function TabLayout() {
     return (
         <Tabs
             screenOptions={{
-                tabBarActiveTintColor: '#ef4e35', // สีม่วงเข้มสำหรับไอคอนที่เลือก
+                tabBarActiveTintColor: '#6722c8', // สีม่วงเข้มสำหรับไอคอนที่เลือก
                 tabBarInactiveTintColor: '#9CA3AF', // สีเทาสำหรับไอคอนที่ไม่ถูกเลือก
                 tabBarStyle: {
                     height: Platform.OS === 'ios' ? 85 : 65, // ปรับความสูงของ tab bar ตามแพลตฟอร์ม
@@ -18,9 +18,9 @@ export default function TabLayout() {
                     fontWeight: '600',
                 },
                 headerStyle: {
-                    backgroundColor: '#ff5cc9',
+                    backgroundColor: '#FF6FB5',
                 },
-                headerTintColor: '#FFFFFF',
+                headerTintColor: '#000000',
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     fontSize: 18,
@@ -30,10 +30,10 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="index"
                 options={{
-                    title: 'Market',
+                    title: 'Market SeaMory',
                     tabBarIcon: ({ color, size, focused }) => (
                         <Ionicons 
-                        name={focused ? 'home' : 'home-outline'} // เปลี่ยนไอคอนเมื่อถูกเลือก
+                        name={focused ? 'cart' : 'cart-outline'} // เปลี่ยนไอคอนเมื่อถูกเลือก
                         size={size} 
                         color={color} 
                         />
