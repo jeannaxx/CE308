@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+modul Book {
+  bookId String @id @default(uuid()) @db.Unid
+  title  String
+  author String
+  description Sting?
+  price Float
+  createdAt DateTime @default(now())
+  updateAt DataTime @updateAt
+}
