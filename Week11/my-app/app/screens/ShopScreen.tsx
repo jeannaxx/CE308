@@ -1,3 +1,4 @@
+@ -1,36 +0,0 @@
 import React from 'react';
 import {View,Text,Button,StyleSheet} from 'react-native';
 import{useSelector,useDispatch} from 'react-redux';
