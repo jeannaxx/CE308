@@ -39,17 +39,17 @@ const ShoppingCartSlice = createSlice({
       if (itemToRemove) {
         state.totalAmount -= itemToRemove.price * itemToRemove.quantity;
       }
-      // 2. กรองเอาเฉพาะตัวที่ id ไม่ตรงกับที่ส่งมาเก็บไว้ (ตัวที่ตรงจะหายไป)
+      // 2. กรองเอาเฉพาะตัวที่ id ไม่ตรงกับที่ส่งมาเก็บไว้ 
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
-    //ล้างตะกร้า
+    //ล้างตะกร้า ทั้งหมด
     clearCart: (state) => {
       state.items = [];
       state.totalAmount = 0;
     },
   },
 });
-
+//Action
 export const {addItem, removeItem, clearCart} = ShoppingCartSlice.actions;
 //export Reducer ไปใส่ใน store
 export default ShoppingCartSlice.reducer;

@@ -7,6 +7,6 @@ export const store = configureStore({
         counter:couterReducer,
     }
 });
-
-export type Rootstate = ReturnType<typeof store.getState>;
+//เก็บข้อมูลที่ไม่่ใข้ คลังเก็บของ
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
