@@ -5,7 +5,7 @@ import { RootState, AppDispatch } from "../redux/StoreShop";
 import { addItem, removeItem, clearCart } from "../redux/ShoppingCart";
 
 const ShopScreen = () => {
-  // 1. ดึง State จาก Redux (เช็คชื่อตัวแปรใน Store ด้วยว่าตั้งว่า cart หรือ counter)
+  // 1. ดึง State จาก Redux 
   const cart = useSelector((state: RootState) => state.cart); 
   const dispatch = useDispatch<AppDispatch>();
 

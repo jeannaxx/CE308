@@ -22,7 +22,7 @@ const initialState: CartState = {
 
 //3.use createSlice สร้างReduce เเละAction
 const ShoppingCartSlice = createSlice({
-  name: "Shoping",
+  name: "shoping",
   initialState, //บังคับตั้งชื่อนนี้เท่านั้น  ดึงจากข้อสองมาใช้
   reducers: {
     //Action เพิ่มสินค้า
@@ -39,8 +39,8 @@ const ShoppingCartSlice = createSlice({
       if (itemToRemove) {
         state.totalAmount -= itemToRemove.price * itemToRemove.quantity;
       }
-      // 2. กรองเอาเฉพาะตัวที่ id ไม่ตรงกับที่ส่งมาเก็บไว้ 
-      state.items = state.items.filter((item) => item.id !== action.payload);
+        // 2. กรองเอาเฉพาะตัวที่ id ไม่ตรงกับที่ส่งมาเก็บไว้ 
+        state.items = state.items.filter((item) => item.id !== action.payload);
     },
     //ล้างตะกร้า ทั้งหมด
     clearCart: (state) => {
