@@ -2,31 +2,25 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../redux/StoreShop";
-import { addItem, removeItem, clearCart } from "../redux/ShoppingCart";
+import { addItem, removeItem } from "../redux/ShoppingCart";
 
 const ShopScreen = () => {
-  // 1. ดึง State จาก Redux 
-  const cart = useSelector((state: RootState) => state.cart); 
+  const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch<AppDispatch>();
 
-  // 2. Local State สำหรับเก็บค่าจาก Input
   const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [price, setPrice] = useState("");
 
   const handleAddItem = () => {
-    if (name && quantity && price) {
+    if (name.trim()) {
       const newItem = {
-        id: Date.now().toString(), // สร้าง ID แบบสุ่ม
+        id: Date.now().toString(),
         name: name,
-        quantity: parseInt(quantity),
-        price: parseFloat(price),
+        // ใส่ค่า default ไว้เพราะในภาพตัวอย่างไม่มีช่องกรอกจำนวน/ราคา
+        quantity: 1, 
+        price: 0,
       };
       dispatch(addItem(newItem));
-      // ล้างช่อง Input หลังเพิ่มเสร็จ
       setName("");
-      setQuantity("");
-      setPrice("");
     }
   };
 
@@ -34,26 +28,28 @@ const ShopScreen = () => {
     <View style={styles.container}>
       <Text style={styles.header}>index</Text>
 
-      {/* ส่วนกรอกข้อมูล ช่องสี่เหลี่ยม*/}
       <View style={styles.inputSection}>
-        <TextInput style={styles.input} placeholder="ชื่อสินค้า" value={name} onChangeText={setName} />
-        <TextInput style={styles.input} placeholder="จำนวน" value={quantity} keyboardType="numeric" onChangeText={setQuantity} />
-        <TextInput style={styles.input} placeholder="ราคา" value={price} keyboardType="numeric" onChangeText={setPrice} />
+        {/* เหลือแค่ช่องกรอกชื่ออย่างเดียวตามภาพ */}
+        <TextInput 
+          style={styles.input} 
+          placeholder="เพิ่มงาน..." 
+          value={name} 
+          onChangeText={setName} 
+        />
         
         <TouchableOpacity style={styles.addButton} onPress={handleAddItem}>
-          <Text style={styles.buttonText}>เพิ่มลงตะกร้า</Text>
+          <Text style={styles.buttonText}>เพิ่มงาน</Text>
         </TouchableOpacity>
       </View>
 
-      {/* ส่วนแสดงรายการสินค้า  เป้นช่องสีๆ  ใช้falst lisrt*/}
       <FlatList
         data={cart.items}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.cartItem}>
-            <View style={{ flex: 1 }}>
-              <Text>{item.name} x{item.quantity} ราคาต่อหน่วย {item.price} บาท</Text>
-            </View>
+      
+            <Text style={styles.itemText}>{item.name}</Text>
+            
             <TouchableOpacity 
               style={styles.deleteButton} 
               onPress={() => dispatch(removeItem(item.id))}
@@ -63,36 +59,42 @@ const ShopScreen = () => {
           </View>
         )}
       />
-
-      {/* ยอดรวมและปุ่มล้างตะกร้า */}
-      <View style={styles.footer}>
-        <Text style={styles.totalText}>ยอดรวม: {cart.totalAmount} บาท</Text>
-        <TouchableOpacity style={styles.clearButton} onPress={() => dispatch(clearCart())}>
-          <Text style={styles.buttonText}>ล้างตะกร้า</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#fff" },
+  container: { flex: 1, padding: 20, backgroundColor: "#f5f5f5" },
   header: { fontSize: 20, fontWeight: "bold", marginBottom: 10 },
-  inputSection: { marginBottom: 20 },
-  input: { borderWidth: 1, borderColor: "#ccc", padding: 8, marginBottom: 10, borderRadius: 5 },
-  addButton: { backgroundColor: "#2196F3", padding: 12, alignItems: "center" },
+  inputSection: { marginBottom: 10 },
+  input: { 
+    borderWidth: 1, 
+    borderColor: "#333", 
+    padding: 10, 
+    backgroundColor: "#fff",
+    marginBottom: 5 
+  },
+  addButton: { 
+    backgroundColor: "#2196F3", 
+    padding: 12, 
+    alignItems: "center",
+    borderRadius: 2 
+  },
   buttonText: { color: "white", fontWeight: "bold" },
   cartItem: { 
     flexDirection: "row", 
-    backgroundColor: "#e3f2fd", 
-    padding: 10, 
-    marginBottom: 5, 
-    alignItems: "center" 
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 10,
+    borderBottomWidth: 0, // ปรับตามภาพไม่มีเส้นคั่นชัดเจน
   },
-  deleteButton: { backgroundColor: "#2196F3", padding: 8, marginLeft: 10 },
-  footer: { marginTop: 10 },
-  totalText: { fontSize: 18, marginBottom: 10 },
-  clearButton: { backgroundColor: "#2196F3", padding: 12, alignItems: "center" },
+  itemText: { fontSize: 16, flex: 1 },
+  deleteButton: { 
+    backgroundColor: "#2196F3", 
+    paddingVertical: 8, 
+    paddingHorizontal: 15,
+    borderRadius: 2 
+  },
 });
 
 export default ShopScreen;
